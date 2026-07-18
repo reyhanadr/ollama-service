@@ -1,0 +1,18 @@
+# =============================================================================
+# LLM Models — Daftar Model untuk di-pull saat container start
+# =============================================================================
+# Format:
+#   <nama_model>               → Official Ollama library
+#   hf.co/<user>/<model>       → Hugging Face model
+#
+# Komen baris dengan # untuk skip model tersebut.
+# Model resmi Ollama: https://ollama.com/search
+# =============================================================================
+
+llama3.2:3b
+qwen3:8b
+gemma3:4b
+
+# --- Hugging Face Models (uncomment & sesuaikan) ---
+# hf.co/bartowski/Llama-3.2-3B-Instruct-GGUF
+# hf.co/bartowski/Qwen2.5-7B-Instruct-GGUF

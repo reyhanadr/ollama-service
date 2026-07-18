@@ -1,0 +1,70 @@
+# =============================================================================
+# Ollama Shared Service — Docker Compose
+# =============================================================================
+# Usage:
+#   1. cp .env.example .env   (lalu sesuaikan token HF jika perlu)
+#   2. docker compose up -d
+#   3. docker compose logs -f (pantau proses pull model)
+#
+# Container lain bisa akses Ollama via:
+#   http://ollama:11434
+#
+# Caranya: tambahkan network "ollama-net" di compose file project Anda.
+# =============================================================================
+
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    volumes:
+      - ${VOLUME_NAME:-ollama-data}:/root/.ollama
+    environment:
+      - OLLAMA_HOST=${OLLAMA_HOST:-0.0.0.0}
+      - OLLAMA_NUM_PARALLEL=${OLLAMA_NUM_PARALLEL:-4}
+      - OLLAMA_MAX_LOADED_MODELS=${OLLAMA_MAX_LOADED_MODELS:-2}
+      - HF_TOKEN=${HUGGINGFACE_TOKEN}
+    networks:
+      - ollama-net
+
+    # --- GPU Support (NVIDIA) ---
+    # Uncomment block di bawah jika Anda punya NVIDIA GPU dan
+    # nvidia-container-toolkit sudah terinstall.
+    # Cek dengan: nvidia-smi
+    #
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+# =============================================================================
+# Shared Network
+# =============================================================================
+# External network memungkinkan container dari project lain bergabung.
+# Network dibuat otomatis saat `docker compose up -d` pertama kali.
+# =============================================================================
+networks:
+  ollama-net:
+    name: ${NETWORK_NAME:-ollama-net}
+    driver: bridge
+
+# =============================================================================
+# Persistent Volume
+# =============================================================================
+volumes:
+  ollama-data:
+    name: ${VOLUME_NAME:-ollama-data}

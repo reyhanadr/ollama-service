@@ -1,0 +1,5 @@
+# Environment variables (mengandung token/rahasia)
+.env
+
+# Model data (disimpan di volume Docker, tidak perlu di-git)
+ollama-data/
