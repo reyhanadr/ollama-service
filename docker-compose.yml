@@ -2,14 +2,14 @@
 # Ollama Shared Service — Docker Compose
 # =============================================================================
 # Usage:
-#   1. cp .env.example .env   (lalu sesuaikan token HF jika perlu)
+#   1. cp .env.example .env   (then adjust HF token if needed)
 #   2. docker compose up -d
-#   3. docker compose logs -f (pantau proses pull model)
+#   3. docker compose logs -f (monitor the model pull process)
 #
-# Container lain bisa akses Ollama via:
+# Other containers can access Ollama via:
 #   http://ollama:11434
 #
-# Caranya: tambahkan network "ollama-net" di compose file project Anda.
+# To do this: add the "ollama-net" network to your project's compose file.
 # =============================================================================
 
 services:
@@ -32,9 +32,9 @@ services:
       - ollama-net
 
     # --- GPU Support (NVIDIA) ---
-    # Uncomment block di bawah jika Anda punya NVIDIA GPU dan
-    # nvidia-container-toolkit sudah terinstall.
-    # Cek dengan: nvidia-smi
+    # Uncomment the block below if you have an NVIDIA GPU and
+    # nvidia-container-toolkit is installed.
+    # Verify with: nvidia-smi
     #
     # deploy:
     #   resources:
@@ -54,8 +54,8 @@ services:
 # =============================================================================
 # Shared Network
 # =============================================================================
-# External network memungkinkan container dari project lain bergabung.
-# Network dibuat otomatis saat `docker compose up -d` pertama kali.
+# External network allows containers from other projects to join.
+# The network is created automatically on first `docker compose up -d`.
 # =============================================================================
 networks:
   ollama-net:

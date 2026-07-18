@@ -1,16 +1,17 @@
 # =============================================================================
-# Embedding Models — Daftar Model Embedding untuk di-pull saat container start
+# Embedding Models — Model list to pull on container start
 # =============================================================================
 # Format:
-#   <nama_model>               → Official Ollama library
+#   <model_name>               → Official Ollama library
 #   hf.co/<user>/<model>       → Hugging Face model
 #
-# Komen baris dengan # untuk skip model tersebut.
-# Model resmi Ollama: https://ollama.com/search?c=embedding
+# Comment out lines with # to skip a model.
+# Official Ollama models: https://ollama.com/search?c=embedding
 # =============================================================================
 
 nomic-embed-text
 bge-m3
 
-# --- Hugging Face Models (uncomment & sesuaikan) ---
-# hf.co/Qualcomm/CodeBERTa-embedding-v2-GGUF
+# --- Hugging Face Models (uncomment & adjust) ---
+hf.co/keisuke-miyako/harrier-oss-v1-0.6b-gguf-q8_0
+hf.co/jinaai/jina-embeddings-v5-text-small-text-matching-GGUF:Q8_0

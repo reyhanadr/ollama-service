@@ -3,7 +3,7 @@
 # Ollama Auto-Pull Startup Script
 # =============================================================================
 # 1. Start Ollama server di background
-# 2. Tunggu sampai Ollama siap menerima request
+# 2. Wait until Ollama is ready to accept requests
 # 3. Pull semua model dari llm-models.txt dan embedding-models.txt
 # 4. Keep container alive
 #
