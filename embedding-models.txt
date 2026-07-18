@@ -9,8 +9,8 @@
 # Official Ollama models: https://ollama.com/search?c=embedding
 # =============================================================================
 
-nomic-embed-text
-bge-m3
+# nomic-embed-text
+# bge-m3
 
 # --- Hugging Face Models (uncomment & adjust) ---
 hf.co/keisuke-miyako/harrier-oss-v1-0.6b-gguf-q8_0

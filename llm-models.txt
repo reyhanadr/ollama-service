@@ -9,9 +9,9 @@
 # Official Ollama models: https://ollama.com/search
 # =============================================================================
 
-llama3.2:3b
-qwen3:8b
-gemma3:4b
+# llama3.2:3b
+# qwen3:8b
+# gemma3:4b
 
 # --- Hugging Face Models (uncomment & adjust) ---
 # hf.co/bartowski/Llama-3.2-3B-Instruct-GGUF

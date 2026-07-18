@@ -7,7 +7,7 @@ A standalone **Ollama** service running as a Docker container, accessible by oth
 ## 📁 File Structure
 
 ```
-Infrastructure/ollama/
+ollama-service/
 ├── .env.example              # Environment variables template
 ├── .gitignore                # Ignore .env and model data
 ├── docker-compose.yml        # Service definition + shared network
